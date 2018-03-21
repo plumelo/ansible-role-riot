@@ -1,2 +1,5 @@
 ---
-# tasks file for ansible-role-riot
+
+- import_tasks: dependencies.yml
+
+- import_tasks: synapse.yml
