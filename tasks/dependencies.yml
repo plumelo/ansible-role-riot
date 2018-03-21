@@ -1,0 +1,23 @@
+---
+
+- name: Install dependencies
+  apt:
+    name: '{{ item }}'
+    update_cache: true
+  with_items:
+    - acl
+    - git
+    - build-essential
+    - python2.7-dev
+    - libffi-dev
+    - python-pip
+    - python-setuptools
+    - sqlite3
+    - libssl-dev
+    - python-virtualenv
+    - libjpeg-dev
+    - libxslt1-dev
+
+- name: Ensure riot user exists
+  user:
+    name: '{{ riot_user }}'
