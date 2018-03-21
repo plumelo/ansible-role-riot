@@ -2,6 +2,6 @@
 .DS_Store
 .vagrant
 tests/roles/*
-!tests/roles/plumelo.borg
+!tests/roles/plumelo.riot
 .config.vim
 credentials
