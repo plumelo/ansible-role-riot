@@ -1,2 +1,10 @@
 ---
-# defaults file for ansible-role-riot
+
+riot_name: riot
+riot_user: '{{ riot_name }}'
+
+synapse_virtual_env: /home/{{ riot_user }}/.synapse
+synapse_repo: https://github.com/matrix-org/synapse/tarball/master
+synapse_hostname: localhost
+
+synapse_config: '{{ homeserver_configs }}'
