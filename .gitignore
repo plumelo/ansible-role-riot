@@ -1,0 +1,7 @@
+*.retry
+.DS_Store
+.vagrant
+tests/roles/*
+!tests/roles/plumelo.borg
+.config.vim
+credentials
