@@ -3,7 +3,7 @@
 - name: Install synapse
   pip:
     name: '{{ synapse_repo }}'
-    virtualenv: '{{ synapse_virtual_env }}'
+    virtualenv: '{{ synapse_virtualenv }}'
   become: true
   become_user: '{{ riot_user }}'
 
@@ -11,12 +11,25 @@
   # yamllint disable-line rule:line-length
   shell: '. bin/activate && python -m synapse.app.homeserver --server-name {{ synapse_hostname }} --config-path homeserver.yaml --generate-config --report-stats=yes'
   args:
-    chdir: '{{ synapse_virtual_env }}'
-    creates: '{{ synapse_virtual_env }}/homeserver.yaml'
+    chdir: '{{ synapse_virtualenv }}'
+    creates: '{{ synapse_virtualenv }}/homeserver.yaml'
+  become: true
+  become_user: '{{ riot_user }}'
 
 - name: Configure homeserver
   template:
     src: homeserver.yaml.j2
-    dest: '{{ synapse_virtual_env }}/homeserver.yaml'
+    dest: '{{ synapse_virtualenv }}/homeserver.yaml'
   with_items:
     - '{{ synapse_config }}'
+  become: true
+  become_user: '{{ riot_user }}'
+
+- name: Configure homeserver log
+  template:
+    src: logging.yaml.j2
+    dest: '{{ synapse_virtualenv }}/logging.yaml'
+  with_items:
+    - '{{ synapse_log }}'
+  become: true
+  become_user: '{{ riot_user }}'
