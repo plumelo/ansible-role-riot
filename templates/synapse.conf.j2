@@ -1,0 +1,12 @@
+#{{ ansible_managed}}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name matrix.local;
+
+    location /_matrix {
+        proxy_pass http://localhost:8008;
+        proxy_set_header X-Forwarded-For $remote_addr;
+    }
+}
