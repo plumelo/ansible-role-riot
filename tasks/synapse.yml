@@ -29,7 +29,5 @@
   template:
     src: logging.yaml.j2
     dest: '{{ synapse_virtualenv }}/logging.yaml'
-  with_items:
-    - '{{ synapse_log }}'
   become: true
   become_user: '{{ riot_user }}'
