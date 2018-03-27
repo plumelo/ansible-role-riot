@@ -1,0 +1,9 @@
+[Unit]
+Description=Cabot
+AssertPathExists={{ synapse_virtualenv }}
+BindsTo=cabot.service
+After=cabot.service
+
+[Service]
+ExecStart={{ synapse_virtualenv }}/bin/celery beat -A cabot --loglevel=DEBUG
+EnvironmentFile={{}}
