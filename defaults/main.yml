@@ -2,9 +2,21 @@
 
 riot_name: riot
 riot_user: '{{ riot_name }}'
+riot_path: /home/{{ riot_user }}
 
-synapse_virtual_env: /home/{{ riot_user }}/.synapse
+synapse_virtualenv: '{{ riot_path }}/.synapse'
 synapse_repo: https://github.com/matrix-org/synapse/tarball/master
 synapse_hostname: localhost
 
 synapse_config: '{{ homeserver_configs }}'
+synapse_log: '{{ homeserver_logs }}'
+
+synapse_nginx_install: true
+_synapse_nginx_site:
+  template: 'synapse.conf.j2'
+  server_name: '{{ synapse_server_name }}'
+
+synapse_nginx_site: {}
+synapse_nginx_sites:
+  # yamllint disable-line rule:line-length
+  '{{ riot_user }}': '{{ _synapse_nginx_site| combine(synapse_nginx_site) }}'
