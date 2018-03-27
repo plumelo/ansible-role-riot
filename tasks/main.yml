@@ -3,3 +3,6 @@
 - import_tasks: dependencies.yml
 
 - import_tasks: synapse.yml
+
+- import_tasks: nginx.yml
+  when: synapse_nginx_install
