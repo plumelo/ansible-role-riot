@@ -9,7 +9,7 @@ synapse_repo: https://github.com/matrix-org/synapse/tarball/master
 synapse_hostname: localhost
 
 synapse_config: '{{ homeserver_configs }}'
-synapse_log: '{{ homeserver_logs }}'
+# synapse_log: '{{ homeserver_logs }}'
 
 synapse_nginx_install: true
 _synapse_nginx_site:
