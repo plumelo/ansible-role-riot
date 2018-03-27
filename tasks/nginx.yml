@@ -1,0 +1,10 @@
+---
+
+- include_role: name=jdauphant.nginx private=true
+  vars:
+    nginx_official_repo: true
+    nginx_official_repo_mainline: true
+    nginx_sites:
+      default:
+        template: 'synapse.conf.j2'
+        server_name: '_'
