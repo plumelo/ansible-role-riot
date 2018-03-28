@@ -47,7 +47,7 @@ homeserver_configs:
   database:
     name: "psycopg2"
     args:
-      database: synapse
+      database: '{{ synapse_db }}'
 
   event_cache_size: "10K"
 
@@ -86,3 +86,5 @@ homeserver_configs:
   old_signing_keys: {}
 
   key_refresh_interval: "1d"
+
+  report_stats: "no"
