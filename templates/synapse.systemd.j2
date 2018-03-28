@@ -1,9 +1,13 @@
 [Unit]
-Description=Cabot
-AssertPathExists={{ synapse_virtualenv }}
-BindsTo=cabot.service
-After=cabot.service
+Description=synapseservice
 
 [Service]
-ExecStart={{ synapse_virtualenv }}/bin/celery beat -A cabot --loglevel=DEBUG
-EnvironmentFile={{}}
+Type=simple
+User={{ riot_user }}
+WorkingDirectory={{ synapse_virtualenv }}
+Environement=VIRTUAL_ENV={{ synapse_virtualenv }}
+Environement=PATH=$VIRTUAL_ENV/bin:$PATH
+ExecStart={{ synapse_virtualenv }}/bin/synctl start
+
+[Install]
+WantedBy=multi-user.target
