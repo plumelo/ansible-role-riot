@@ -7,6 +7,18 @@
   become: true
   become_user: '{{ riot_user }}'
 
+- name: PIP to install needed dependencies into virtualenv
+  pip:
+    name: '{{ item }}'
+    virtualenv: '{{ synapse_virtualenv }}'
+  with_items:
+    - cryptography
+    - pyasn1_modules
+    - characteristic
+    - simplejson
+    - canonicaljson
+    - psycopg2
+
 - name: Generate homeserver config file
   # yamllint disable-line rule:line-length
   shell: '. bin/activate && python -m synapse.app.homeserver --server-name {{ synapse_hostname }} --config-path homeserver.yaml --generate-config --report-stats=yes'
@@ -31,3 +43,20 @@
     dest: '{{ synapse_virtualenv }}/logging.yaml'
   become: true
   become_user: '{{ riot_user }}'
+
+- name: Systemd synapse
+  template:
+    src: synapse.systemd.j2
+    dest: /etc/systemd/system/synapse.service
+
+- name: Enable synapse services
+  systemd:
+    name: synapse
+    enabled: true
+    daemon_reload: true
+
+- name: Start synapse
+  systemd:
+    name: synapse
+    state: started
+    daemon_reload: true
