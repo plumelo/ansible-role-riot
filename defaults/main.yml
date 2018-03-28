@@ -20,3 +20,8 @@ synapse_nginx_site: {}
 synapse_nginx_sites:
   # yamllint disable-line rule:line-length
   '{{ riot_user }}': '{{ _synapse_nginx_site| combine(synapse_nginx_site) }}'
+
+synapse_postgres_install: true
+synapse_db: riot
+synapse_db_user: riot
+synapse_db_pass: riot

@@ -2,7 +2,10 @@
 
 - import_tasks: dependencies.yml
 
-- import_tasks: synapse.yml
-
 - import_tasks: nginx.yml
   when: synapse_nginx_install
+
+- import_tasks: postgres.yml
+  when: synapse_postgres_install
+
+- import_tasks: synapse.yml
