@@ -1,0 +1,7 @@
+nnoremap ,t :CtrlP /home/vasy/Projects/ansible-role-riot/tasks<CR>
+nnoremap ,t :CtrlP tasks<CR>
+nnoremap ,d :CtrlP defaults<CR>
+nnoremap ,x :CtrlP tests<CR>
+nnoremap ,m :CtrlP templates<CR>
+nnoremap ,v :CtrlP vars<CR>
+nnoremap ,h :CtrlP handlers<CR>

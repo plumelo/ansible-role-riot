@@ -5,3 +5,4 @@ tests/roles/*
 !tests/roles/plumelo.riot
 .config.vim
 credentials
+.git

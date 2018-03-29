@@ -4,9 +4,9 @@ Description=synapseservice
 [Service]
 Type=simple
 User={{ riot_user }}
+PermissionsStartOnly=true
 WorkingDirectory={{ synapse_virtualenv }}
-Environement=VIRTUAL_ENV={{ synapse_virtualenv }}
-Environement=PATH=$VIRTUAL_ENV/bin:$PATH
+ExecStartPre=source {{ synapse_virtualenv }}/bin/activate
 ExecStart={{ synapse_virtualenv }}/bin/synctl start
 
 [Install]
