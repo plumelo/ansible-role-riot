@@ -19,10 +19,11 @@
     - canonicaljson
     - psycopg2
     - psycopg2-binary
+    - twisted
 
 - name: Generate homeserver config file
   # yamllint disable-line rule:line-length
-  shell: '. bin/activate && python -m synapse.app.homeserver --server-name {{ synapse_hostname }} --config-path homeserver.yaml --generate-config --report-stats=yes'
+  shell: '. bin/activate && python -m synapse.app.homeserver --server-name {{ synapse_hostname }} --config-path homeserver.yaml --generate-config --report-stats=no'
   args:
     chdir: '{{ synapse_virtualenv }}'
     creates: '{{ synapse_virtualenv }}/homeserver.yaml'
@@ -50,14 +51,16 @@
     src: synapse.systemd.j2
     dest: /etc/systemd/system/synapse.service
 
-- name: Enable synapse services
+- name: just force systemd to reread configs
   systemd:
-    name: synapse
-    enabled: true
     daemon_reload: true
 
+- name: Enable synapse services
+  service:
+    name: synapse
+    enabled: true
+
 - name: Start synapse
-  systemd:
+  service:
     name: synapse
     state: started
-    daemon_reload: true
