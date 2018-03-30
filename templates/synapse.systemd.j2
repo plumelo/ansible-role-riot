@@ -1,13 +1,16 @@
+# {{ ansible_managed }}
+
 [Unit]
-Description=synapseservice
+Description=Synapse Matrix homeserver
+
 
 [Service]
 Type=simple
 User={{ riot_user }}
-PermissionsStartOnly=true
 WorkingDirectory={{ synapse_virtualenv }}
-ExecStartPre=source {{ synapse_virtualenv }}/bin/activate
-ExecStart={{ synapse_virtualenv }}/bin/synctl start
+# ExecStart=cd {{ synapse_virtualenv }} && {{ synapse_virtualenv }}/bin/synctl start
+ExecStart={{ synapse_virtualenv }}/bin/python -m synapse.app.homeserver --config-path={{ synapse_virtualenv }}/homeserver.yaml
+ExecStop={{ synapse_virtualenv }}/bin/synctl stop {{ synapse_virtualenv }}/homeserver.yaml
 
 [Install]
 WantedBy=multi-user.target
