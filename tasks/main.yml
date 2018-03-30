@@ -8,4 +8,6 @@
 - import_tasks: postgres.yml
   when: synapse_postgres_install
 
+- import_tasks: riot-web.yml
+
 - import_tasks: synapse.yml

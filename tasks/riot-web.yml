@@ -1,0 +1,17 @@
+---
+
+- name: Riot-web apt repository
+  apt_key:
+    url: https://riot.im/packages/debian/repo-key.asc
+    state: present
+
+- name: Riot-web apt repository
+  apt_repository:
+    repo: deb https://riot.im/packages/debian/ stretch main
+    state: present
+
+- name: Install riot-web
+  apt:
+    name: riot-web
+    state: present
+    update_cache: true
