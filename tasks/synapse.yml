@@ -12,14 +12,9 @@
     name: '{{ item }}'
     virtualenv: '{{ synapse_virtualenv }}'
   with_items:
-    - cryptography
-    - pyasn1_modules
     - characteristic
-    - simplejson
-    - canonicaljson
     - psycopg2
     - psycopg2-binary
-    - twisted
 
 - name: Generate homeserver config file
   # yamllint disable-line rule:line-length
