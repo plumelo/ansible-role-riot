@@ -1,0 +1,13 @@
+---
+
+- name: Register new matrix admin user
+  become: true
+  become_user: '{{ riot_user }}'
+  shell: >
+    echo {{ item.admin|ternary('yes', 'no') }} | ./bin/register_new_matrix_user
+    -c homeserver.yaml -u {{ item.name }}
+    -p {{ item.password }} https://{{ synapse_hostname }}:8448
+  args:
+    chdir: '{{ synapse_virtualenv }}'
+  with_items:
+    - '{{ synapse_matrix_user }}'
