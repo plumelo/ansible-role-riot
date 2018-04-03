@@ -21,3 +21,11 @@
 - name: Ensure riot user exists
   user:
     name: '{{ riot_user }}'
+
+- name: Install n
+  become: true
+  become_user: '{{ riot_user }}'
+  shell: curl -L https://git.io/n-install | SHELL=/bin/bash bash -s -- -y stable
+  args:
+    creates: '/home/{{ riot_user }}/n/bin/n'
+    executable: /bin/bash
