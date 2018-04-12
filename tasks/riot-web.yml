@@ -11,15 +11,17 @@
 - name: Download riot-web
   unarchive:
     src: '{{ riot_web_repo }}'
-    dest: '{{ riot_path }}'
+    dest: '{{ riot_path }}/riot-web'
     remote_src: true
     extra_opts: '--strip-components=1'
     owner: '{{ riot_user }}'
     group: '{{ riot_user }}'
+    mode: 0775
 
-# - name: Riot-web configs
-#   template:
-#     src: matrix.yml.j2
-#     dest: '{{ riot_web_path }}'
-#   become: true
-#   become_user: '{{ riot_user }}'
+- name: Riot-web configs
+  template:
+    src: config.json.j2
+    dest: '{{ riot_web_path }}/config.json'
+    owner: '{{ riot_user }}'
+    group: '{{ riot_user }}'
+    mode: 0775
