@@ -46,7 +46,7 @@
     src: synapse.systemd.j2
     dest: /etc/systemd/system/synapse.service
 
-- name: just force systemd to reread configs
+- name: Just force systemd to reread configs
   systemd:
     daemon_reload: true
 
