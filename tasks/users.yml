@@ -1,6 +1,6 @@
 ---
 
-- name: Register new matrix admin user
+- name: Register new matrix user
   become: true
   become_user: '{{ riot_user }}'
   shell: >
@@ -11,3 +11,4 @@
     chdir: '{{ synapse_virtualenv }}'
   with_items:
     - '{{ synapse_matrix_user }}'
+  register: new_users
