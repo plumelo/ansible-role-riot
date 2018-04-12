@@ -37,7 +37,7 @@
 - name: Configure homeserver log
   template:
     src: logging.yaml.j2
-    dest: '{{ synapse_virtualenv }}/logging.yaml'
+    dest: '{{ synapse_virtualenv }}/logging.log'
   become: true
   become_user: '{{ riot_user }}'
 
@@ -46,7 +46,7 @@
     src: synapse.systemd.j2
     dest: /etc/systemd/system/synapse.service
 
-- name: Just force systemd to reread configs
+- name: Force systemd to reload configs
   systemd:
     daemon_reload: true
 
