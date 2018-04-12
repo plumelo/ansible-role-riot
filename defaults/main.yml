@@ -4,6 +4,7 @@ riot_name: riot
 riot_user: '{{ riot_name }}'
 riot_path: /home/{{ riot_user }}
 
+# yamllint disable-line rule:line-length
 riot_web_repo: https://github.com/vector-im/riot-web/releases/download/{{ riot_web_version }}/riot-{{ riot_web_version }}.tar.gz
 riot_web_version: v0.14.0-rc.4
 riot_web_path: '{{ riot_path }}/riot-web'
