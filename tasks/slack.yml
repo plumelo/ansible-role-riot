@@ -1,0 +1,17 @@
+---
+
+- name: Clone git repo matrix-appservice-slack
+  git:
+    accept_hostkey: true
+    repo: '{{ matrix_slack_repo }}'
+    dest: '{{ matrix_slack_web_path }}'
+  become: true
+  become_user: '{{ riot_user }}'
+
+- name: NPM install
+  npm:
+    path: '{{ matrix_slack_web_path }}'
+    executable: '../n/bin/npm'
+    state: present
+  become: true
+  become_user: '{{ riot_user }}'
