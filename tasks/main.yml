@@ -13,3 +13,5 @@
 - import_tasks: riot-web.yml
 
 - import_tasks: users.yml
+
+- import_tasks: slack.yml
