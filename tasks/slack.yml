@@ -15,3 +15,11 @@
     '{{ riot_web_env }}'
   become: true
   become_user: '{{ riot_user }}'
+
+- name: Matrix-slack configuration
+  template:
+    src: config.yaml.j2
+    dest: '{{ matrix_slack_web_path }}/config/config.yaml'
+    owner: '{{ riot_user }}'
+    group: '{{ riot_user }}'
+    mode: 0775
