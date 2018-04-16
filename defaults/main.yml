@@ -35,3 +35,6 @@ synapse_db_pass: riot
 
 riot_web_env:
   PATH: '{{ riot_path }}/n/bin:{{ ansible_env.PATH }}'
+
+matrix_slack_repo: https://github.com/matrix-org/matrix-appservice-slack.git
+matrix_slack_web_path: '{{ riot_path }}/matrix-appservice-slack'
