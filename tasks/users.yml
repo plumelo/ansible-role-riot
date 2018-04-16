@@ -12,3 +12,6 @@
   with_items:
     - '{{ synapse_matrix_user }}'
   register: new_users
+  # yamllint disable-line rule:line-length
+  failed_when: new_users.rc > 0 and 'User ID already taken' not in new_users.stdout
+  changed_when: new_users.rc == 0
