@@ -5,9 +5,6 @@
   roles:
     - role: plumelo.riot
       synapse_matrix_user:
-        - name: user1
-          admin: false
-          password: 1234
-        - name: user2
+        - name: admin
           admin: true
-          password: 2356
+          password: 1234
