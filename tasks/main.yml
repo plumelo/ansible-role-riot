@@ -2,6 +2,8 @@
 
 - import_tasks: dependencies.yml
 
+- import_tasks: slack.yml
+
 - import_tasks: synapse.yml
 
 - import_tasks: postgres.yml
@@ -13,5 +15,3 @@
 - import_tasks: riot-web.yml
 
 - import_tasks: users.yml
-
-- import_tasks: slack.yml
