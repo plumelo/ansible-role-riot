@@ -331,8 +331,9 @@ homeserver_configs:
 
 
   # A list of application service config file to use
-  app_service_config_files: []
-
+  # app_service_config_files: "{{ app_service_config_files }}"
+  app_service_config_files:
+    - "{{ matrix_slack_web_path }}/slack-registration.yaml"
 
   # macaroon_secret_key: <PRIVATE STRING>
 
