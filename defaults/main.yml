@@ -12,7 +12,7 @@ riot_web_path: '{{ riot_path }}/riot-web'
 synapse_matrix_user: []
 
 synapse_virtualenv: '{{ riot_path }}/.synapse'
-synapse_repo: https://github.com/matrix-org/synapse/tarball/master
+synapse_repo: https://github.com/matrix-org/synapse/archive/v0.28.1.tar.gz
 synapse_hostname: localhost
 
 synapse_config: '{{ homeserver_configs }}'
