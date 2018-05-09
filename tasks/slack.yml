@@ -23,3 +23,13 @@
     owner: '{{ riot_user }}'
     group: '{{ riot_user }}'
     mode: 0775
+
+- name: Generate the appservice registration file
+  shell: node app.js -r -c config/config.yaml -u "http://localhost:8080"
+  environment:
+    '{{ riot_web_env }}'
+  args:
+    chdir: '{{ matrix_slack_web_path }}'
+    creates: slack-registration.yaml
+  become: true
+  become_user: '{{ riot_user }}'
