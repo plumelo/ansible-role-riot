@@ -15,7 +15,8 @@ synapse_virtualenv: '{{ riot_path }}/.synapse'
 synapse_repo: https://github.com/matrix-org/synapse/archive/v0.28.1.tar.gz
 synapse_hostname: localhost
 
-synapse_config: '{{ homeserver_configs }}'
+synapse_config: {}
+_synapse_config: '{{ synapse_config_defaults | combine(synapse_config) }}'
 # synapse_log: '{{ homeserver_logs }}'
 
 synapse_nginx_install: true
