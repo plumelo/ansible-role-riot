@@ -43,7 +43,7 @@
 
 - name: Systemd synapse
   template:
-    src: synapse.systemd.j2
+    src: synapse.service.j2
     dest: /etc/systemd/system/synapse.service
 
 - name: Force systemd to reload configs
