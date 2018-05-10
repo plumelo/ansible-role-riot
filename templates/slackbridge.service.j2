@@ -1,0 +1,15 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description=Slack Bridge
+
+[Service]
+Type=simple
+User={{ riot_user }}
+Environment=PATH=/home/riot/n/bin
+WorkingDirectory={{ matrix_slack_web_path }}
+ExecStart=/home/riot/n/bin/node app.js -c config/config.yaml -p 8080
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
