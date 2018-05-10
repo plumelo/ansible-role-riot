@@ -16,7 +16,7 @@
   become: true
   become_user: '{{ riot_user }}'
 
-- name: Matrix-slack configuration
+- name: Slack bridge configuration
   template:
     src: config.yaml.j2
     dest: '{{ matrix_slack_web_path }}/config/config.yaml'
@@ -33,3 +33,18 @@
     creates: slack-registration.yaml
   become: true
   become_user: '{{ riot_user }}'
+
+- name: Systemd slack bridge
+  template:
+    src: slackbridge.service.j2
+    dest: /etc/systemd/system/slackbridge.service
+
+- name: Enable slackbridge service
+  service:
+    name: slackbridge
+    enabled: true
+
+- name: Start slackbridge service
+  service:
+    name: slackbridge
+    state: started
