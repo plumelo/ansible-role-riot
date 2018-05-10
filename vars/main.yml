@@ -1,4 +1,4 @@
-homeserver_configs:
+synapse_config_defaults:
   tls_certificate_path: "{{ synapse_virtualenv }}/{{ synapse_hostname }}.tls.crt"
 
   # PEM encoded private key for TLS
