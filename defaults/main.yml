@@ -1,14 +1,5 @@
 ---
 
-riot_name: riot
-riot_user: '{{ riot_name }}'
-riot_path: /home/{{ riot_user }}
-
-# yamllint disable-line rule:line-length
-riot_web_repo: https://github.com/vector-im/riot-web/releases/download/{{ riot_web_version }}/riot-{{ riot_web_version }}.tar.gz
-riot_web_version: v0.14.0-rc.4
-riot_web_path: '{{ riot_path }}/riot-web'
-
 synapse_matrix_user: []
 
 synapse_virtualenv: '{{ riot_path }}/.synapse'
@@ -34,6 +25,13 @@ synapse_db: riot
 synapse_db_user: riot
 synapse_db_pass: riot
 
+riot_name: riot
+riot_user: '{{ riot_name }}'
+riot_path: /home/{{ riot_user }}
+# yamllint disable-line rule:line-length
+riot_web_repo: https://github.com/vector-im/riot-web/releases/download/{{ riot_web_version }}/riot-{{ riot_web_version }}.tar.gz
+riot_web_version: v0.14.0-rc.4
+riot_web_path: '{{ riot_path }}/riot-web'
 riot_web_env:
   PATH: '{{ riot_path }}/n/bin:{{ ansible_env.PATH }}'
 
