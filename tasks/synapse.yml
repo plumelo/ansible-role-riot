@@ -30,7 +30,7 @@
     src: homeserver.yaml.j2
     dest: '{{ synapse_virtualenv }}/homeserver.yaml'
   with_items:
-    - '{{ synapse_config }}'
+    - '{{ _synapse_config }}'
   become: true
   become_user: '{{ riot_user }}'
 
