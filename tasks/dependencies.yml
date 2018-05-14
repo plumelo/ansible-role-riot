@@ -18,6 +18,18 @@
     - libjpeg-dev
     - libxslt1-dev
 
+- name: Add go ppa
+  apt_repository:
+    repo: ppa:longsleep/golang-backports
+    state: present
+    update_cache: true
+
+- name: Install golang
+  apt:
+    name: golang-go
+    state: present
+
+
 - name: Ensure riot user exists
   user:
     name: '{{ riot_user }}'
