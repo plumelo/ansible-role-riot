@@ -37,3 +37,6 @@ riot_web_env:
 
 matrix_slack_repo: https://github.com/matrix-org/matrix-appservice-slack.git
 matrix_slack_web_path: '{{ riot_path }}/matrix-appservice-slack'
+
+matrix_go_neb_repo: https://github.com/matrix-org/go-neb
+matrix_go_neb_config: {}
