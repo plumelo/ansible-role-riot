@@ -2,6 +2,8 @@
 
 - import_tasks: dependencies.yml
 
+- import_tasks: go-neb.yml
+
 - import_tasks: slack.yml
 
 - import_tasks: synapse.yml
