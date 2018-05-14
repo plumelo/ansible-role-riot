@@ -1,0 +1,32 @@
+---
+
+- name: Install gb
+  shell: go get github.com/constabulary/gb/...
+  creates: ~/go/bin/gb
+  become: true
+  become_user: '{{ riot_user }}'
+
+- name: Clone the git repo for go-neb
+  git:
+    accept_hostkey: yes
+    repo: '{{ matrix_go_neb_repo }}'
+    dest: '{{ riot_path }}/go-neb'
+  become: true
+  become_user: '{{ riot_user }}'
+
+- name: Build go-neb
+  shell: ~/go/bin/gb build github.com/matrix-org/go-neb
+  args:
+    chdir: '{{ riot_path }}/go-neb'
+    creates: README.md
+  become: true
+  become_user: '{{ riot_user }}'
+
+- name: Go-NEB config file
+  template:
+    src: go-neb/config.yaml.j2
+    dest: '{{ riot_path }}/go-neb/config.yaml'
+  with_items:
+    - '{{ matrix_go_neb_config }}'
+  become: true
+  become_user: '{{ riot_user }}'
